@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="mb-4">Latest Posts</h1>
+<div class="row">
+  {% for post in posts %}
+    <div class="col-md-6 mb-3">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="{{ url_for('post', post_id=post.id) }}" class="text-decoration-none text-dark">
+              {{ post.title }}
+            </a>
+          </h4>
+          <!-- Post content preview -->
+          <p class="card-text text-muted">
+            {{ post.content[:150] }}...
+          </p>
+          <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary btn-sm">Read More</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
